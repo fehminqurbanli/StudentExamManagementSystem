@@ -10,8 +10,10 @@ namespace StudentExamDemo.Infrastructure.Persistence
             {
                 context.Students.Add(new Student
                 {
-                    FirstName = "Fahmin",
-                    LastName = "Gurbanli"
+                    Name = "Fahmin",
+                    Surname = "Gurbanli",
+                    Class = 11,
+                    StudentNumber = 12346
                 });
 
                 await context.SaveChangesAsync();

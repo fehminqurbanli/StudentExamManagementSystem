@@ -7,9 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Interfaces\" />
-    <Folder Include="Students\Commands\CreateStudent\" />
-    <Folder Include="Students\Queries\GetStudentList\" />
+    <Compile Remove="Common\**" />
+    <Compile Remove="Students\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Students\**" />
+    <None Remove="Common\**" />
+    <None Remove="Students\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentExamDemo.Domain\StudentExamDemo.Domain.csproj" />
   </ItemGroup>
 
 </Project>

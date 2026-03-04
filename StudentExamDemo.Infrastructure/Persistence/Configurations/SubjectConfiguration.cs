@@ -8,15 +8,36 @@ namespace StudentExamDemo.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Subject> builder)
         {
-            builder.HasKey(x => new { x.StudentId, x.ExamId });
+            builder.ToTable("Subjects");
 
-            builder.HasOne(x => x.Student)
-                .WithMany(x => x.StudentExams)
-                .HasForeignKey(x => x.StudentId);
+            builder.HasKey(s => s.Id);
 
-            builder.HasOne(x => x.Exam)
-                .WithMany(x => x.StudentExams)
-                .HasForeignKey(x => x.ExamId);
+            builder.Property(s => s.Code)
+                   .IsRequired()
+                   .HasColumnType("char(3)");
+
+            builder.HasIndex(s => s.Code)
+                   .IsUnique();
+
+            builder.Property(s => s.Name)
+                   .IsRequired()
+                   .HasMaxLength(30);
+
+            builder.Property(s => s.Class)
+                   .HasColumnType("numeric(2,0)")
+                   .IsRequired();
+
+            builder.HasCheckConstraint(
+                "CK_Subject_Class",
+                "[Class] BETWEEN 1 AND 11");
+
+            builder.Property(s => s.TeacherName)
+                   .IsRequired()
+                   .HasMaxLength(20);
+
+            builder.Property(s => s.TeacherSurname)
+                   .IsRequired()
+                   .HasMaxLength(20);
         }
     }
 }

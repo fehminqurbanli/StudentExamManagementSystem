@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StudentExamDemo.Application\StudentExamDemo.Application.csproj" />
     <ProjectReference Include="..\StudentExamDemo.Domain\StudentExamDemo.Domain.csproj" />
   </ItemGroup>
 
