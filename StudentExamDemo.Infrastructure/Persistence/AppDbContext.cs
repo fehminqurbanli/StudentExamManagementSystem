@@ -12,7 +12,7 @@ namespace StudentExamDemo.Infrastructure.Persistence
 
         public DbSet<Student> Students => Set<Student>();
         public DbSet<Exam> Exams => Set<Exam>();
-        public DbSet<StudentExam> StudentExams => Set<StudentExam>();
+        public DbSet<Subject> StudentExams => Set<Subject>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

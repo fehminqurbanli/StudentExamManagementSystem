@@ -1,14 +1,20 @@
-﻿namespace StudentExamDemo.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StudentExamDemo.Domain.Entities
 {
     public class Student
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        [Required, StringLength(30)]
+        public string FirstName { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        [Required, StringLength(30)]
+        public string LastName { get; set; }
 
-        public ICollection<StudentExam> StudentExams { get; set; } = new List<StudentExam>();
+        public int Class { get; set; }
+
+        public ICollection<Exam>? Exams { get; set; }
     }
 }

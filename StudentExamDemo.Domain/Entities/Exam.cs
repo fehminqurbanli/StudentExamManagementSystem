@@ -1,12 +1,24 @@
-﻿namespace StudentExamDemo.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StudentExamDemo.Domain.Entities
 {
     public class Exam
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        public string Title { get; set; } = null!;
-        public int MaxScore { get; set; }
+        [Required]
+        public string SubjectCode { get; set; }
 
-        public ICollection<StudentExam> StudentExams { get; set; } = new List<StudentExam>();
+        public Subject? Subject { get; set; }
+
+        public int StudentId { get; set; }
+
+        public Student? Student { get; set; }
+
+        public DateTime ExamDate { get; set; }
+
+        [Range(1, 5)]
+        public int Grade { get; set; }
     }
 }

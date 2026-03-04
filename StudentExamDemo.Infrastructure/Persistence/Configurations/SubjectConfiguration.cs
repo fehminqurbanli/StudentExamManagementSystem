@@ -4,9 +4,9 @@ using StudentExamDemo.Domain.Entities;
 
 namespace StudentExamDemo.Infrastructure.Persistence.Configurations
 {
-    public class StudentExamConfiguration : IEntityTypeConfiguration<StudentExam>
+    public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
     {
-        public void Configure(EntityTypeBuilder<StudentExam> builder)
+        public void Configure(EntityTypeBuilder<Subject> builder)
         {
             builder.HasKey(x => new { x.StudentId, x.ExamId });
 
