@@ -8,10 +8,16 @@ namespace StudentExamDemo.Application.Mappers
     {
         public ExamProfile()
         {
+            CreateMap<ExamDTO, Exam>()
+                .ForMember(dest => dest.Student, opt => opt.Ignore())
+                .ForMember(dest => dest.Subject, opt => opt.Ignore())
+                .ReverseMap();
+
             CreateMap<ExamCreateDTO, Exam>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Student, opt => opt.Ignore())
-                .ForMember(dest => dest.Subject, opt => opt.Ignore());
+                .ForMember(dest => dest.Subject, opt => opt.Ignore())
+                .ReverseMap();
         }
     }
 }

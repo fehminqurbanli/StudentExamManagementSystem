@@ -20,14 +20,22 @@ namespace StudentExamDemo.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+        public async Task<IActionResult> GetAll() 
+        { 
+            var subjects = await _service.GetAllAsync();
+            var mappedSubjects = _mapper.Map<IEnumerable<SubjectDTO>>(subjects);
+
+            return Ok(mappedSubjects);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var subject = await _service.GetByIdAsync(id);
             if (subject == null) return NotFound();
-            return Ok(subject);
+
+            var mappedSubject = _mapper.Map<SubjectDTO>(subject);
+            return Ok(mappedSubject);
         }
 
         [HttpPost]
@@ -35,13 +43,14 @@ namespace StudentExamDemo.WebAPI.Controllers
         {
             var subject = _mapper.Map<Subject>(dto);
             await _service.AddAsync(subject);
-            return CreatedAtAction(nameof(Get), new { id = subject.Id }, subject);
+            return CreatedAtAction(nameof(Get), new { id = subject.Id }, dto);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Subject subject)
+        public async Task<IActionResult> Update(int id, SubjectCreateDTO dto)
         {
-            if (id != subject.Id) return BadRequest();
+            var subject = _mapper.Map<Subject>(dto);
+            subject.Id = id;
             await _service.UpdateAsync(subject);
             return NoContent();
         }

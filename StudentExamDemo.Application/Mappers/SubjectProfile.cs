@@ -8,6 +8,10 @@ namespace StudentExamDemo.Application.Mappers
     {
         public SubjectProfile()
         {
+            CreateMap<SubjectDTO, Subject>()
+                .ForMember(dest => dest.Exams, opt => opt.Ignore())
+                .ReverseMap();
+
             CreateMap<SubjectCreateDTO, Subject>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Exams, opt => opt.Ignore())

@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using StudentExamDemo.Application.Mappers;
 using StudentExamDemo.Infrastructure;
 using StudentExamDemo.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(SubjectProfile).Assembly);
+
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
