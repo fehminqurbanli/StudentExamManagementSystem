@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StudentExamDemo.Domain.Entities
+﻿namespace StudentExamDemo.Domain.Entities
 {
     public class Student
     {

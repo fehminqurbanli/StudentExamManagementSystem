@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace StudentExamDemo.Domain.Entities
+﻿namespace StudentExamDemo.Domain.Entities
 {
     public class Exam
     {
