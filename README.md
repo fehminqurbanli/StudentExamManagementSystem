@@ -96,7 +96,7 @@ Now listening on: http://localhost:5115
 API işə düşdükdən sonra bütün endpointləri interaktiv şəkildə test etmək üçün Swagger UI-ə daxil ola bilərsiniz:
 
 ```
-https://localhost:7286/swagger
+https://localhost:7286/index.html
 ```
 
 ---
@@ -181,8 +181,10 @@ Backend portu dəyişibsə `environment.ts` faylındakı `apiUrl`-i yeniləyin.
 - Entity Framework Core
 - AutoMapper
 - SQL Server
-- Repository Pattern / Service Layer
-
+- Repository Pattern — verilənlər bazası əməliyyatları üçün abstraksiya təbəqəsi
+- AutoMapper — entity və DTO-lar arasında avtomatik çevrilmə
+- Swagger / OpenAPI — API endpointlərinin avtomatik sənədləşdirilməsi
+  
 **Frontend:**
 - Angular 17+
 - Angular Material
